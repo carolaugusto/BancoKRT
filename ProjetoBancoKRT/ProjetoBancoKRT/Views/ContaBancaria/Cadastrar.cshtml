@@ -1,0 +1,73 @@
+﻿@model ProjetoBancoKRT.Models.ContaBancaria
+
+<div class="container d-flex justify-content-center align-items-center min-vh-80">
+    <div class="card p-4 shadow" style="max-width: 500px; width: 100%;">
+        <h2 class="text-center mb-4">Cadastrar Conta Bancária</h2>
+        <form method="post" onsubmit="return validateForm();">
+            <div class="form-group">
+                <label for="documento">Documento (CPF)</label>
+                <input type="text" maxlength="11" name="documento" id="documento" class="form-control" value="@Model?.Documento" required />
+                <span asp-validation-for="Documento" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="agencia">Agência</label>
+                <input type="text" name="agencia" id="agencia" class="form-control" value="@Model?.Agencia" required maxlength="4" pattern="\d{4}" />
+                <span asp-validation-for="Agencia" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="conta">Conta</label>
+                <input type="text" name="conta" id="conta" class="form-control" value="@Model?.Conta" required maxlength="6" pattern="\d{6}" />
+                <span asp-validation-for="Conta" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="limite">Limite</label>
+                <input type="number" name="limite" id="limite" class="form-control" value="@Model?.Limite" required min="200" />
+                <span asp-validation-for="Limite" class="text-danger"></span>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="button" class="btn btn-secondary" onclick="clearForm()">Limpar</button>
+            </div>
+        </form>
+
+        @if (TempData["Message"] != null)
+        {
+            <div id="message" class="alert alert-info">
+                @TempData["Message"]
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var messageDiv = document.getElementById('message');
+            if (messageDiv) {
+                setTimeout(function () {
+                    messageDiv.style.display = 'none';
+                    window.location.href = '@Url.Action("Cadastrar", "ContaBancaria")';
+                }, 3000);
+            }
+        });
+
+        function validateForm() {
+            var limite = document.getElementById("limite").value;
+            if (limite < 200) {
+                alert("O limite do Pix deve ser maior que 200.");
+                return false;
+            }
+            return true;
+        }
+
+        function clearForm() {
+            document.getElementById("documento").value = "";
+            document.getElementById("agencia").value = "";
+            document.getElementById("conta").value = "";
+            document.getElementById("limite").value = "";
+        }
+    </script>
+}

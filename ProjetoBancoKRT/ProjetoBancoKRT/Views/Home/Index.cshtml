@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Banco KRT";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Selecione uma opção abaixo</h1>  
+</div>
+
+<div class="button-container">
+    <button onclick="window.location.href='@Url.Action("Buscar", "ContaBancaria")'">Buscar Conta</button>
+    <button onclick="window.location.href='@Url.Action("Cadastrar", "ContaBancaria")'">Cadastrar Conta</button>
+    <button onclick="window.location.href='@Url.Action("Transferir", "ContaBancaria")'">Realizar Pix</button>
+ </div>

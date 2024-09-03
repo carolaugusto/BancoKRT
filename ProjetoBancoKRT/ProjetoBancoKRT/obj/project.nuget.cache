@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "S3rgAmmhqhk=",
+  "success": true,
+  "projectFilePath": "C:\\PROJETO\\ProjetoBancoKRT\\ProjetoBancoKRT\\ProjetoBancoKRT.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\anaau\\.nuget\\packages\\awssdk.core\\3.7.400.12\\awssdk.core.3.7.400.12.nupkg.sha512",
+    "C:\\Users\\anaau\\.nuget\\packages\\awssdk.dynamodbv2\\3.7.400.12\\awssdk.dynamodbv2.3.7.400.12.nupkg.sha512"
+  ],
+  "logs": []
+}
